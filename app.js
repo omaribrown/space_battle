@@ -7,21 +7,25 @@ let USS_Schwarzenegger = {
     accuracy: .7
 }
 let Alien1 = {
-    hull: 10, 
+    shipName: "Alien1",
+    hull: 15, 
     firepower: 3,
     accuracy: .6
 }
 let Alien2 = {
+    shipName: "Alien2",
     hull: 10, 
     firepower: 3,
     accuracy: .6
 }
 let Alien3 = {
+    shipName: "Alien3",
     hull: 10, 
     firepower: 3,
     accuracy: .6
 }
 let Alien4 = {
+    shipName: "Alien4",
     hull: 10, 
     firepower: 3,
     accuracy: .6
@@ -36,6 +40,20 @@ let Alien4 = {
 // if that number is within a range, then the other ship is hit
 
 
+// current enemy:
+
+var currentEnemy = Alien1;
+// let currentEnemyCheck = () => {
+//     if (Alien1.hull > 0) {
+//         currentEnemy = Alien1
+//     } else if (Alien1.hull <= 0) {
+//         currentEnemy = Alien2
+//     } else if (Alien2.hull <= 0) {
+//         currentEnemy = Alien3
+//     } else if (Alien3.hull <= 0) {
+//         currentEnemy = Alien4
+//     }
+// 
 // Retreat function:
 
 let retreat = () => {
@@ -46,10 +64,10 @@ let retreat = () => {
 
 let userAttack = () => {
     // let userHitChance = Math.random()
-    let testHit = .6
-    if (testHit <= USS_Schwarzenegger['accuracy']) {
+    let testHitChance = .6
+    if (testHitChance <= USS_Schwarzenegger['accuracy']) {
         console.log("It's a hit!")
-        Alien1.hull = Alien1.hull - USS_Schwarzenegger.firepower
+        currentEnemy.hull = currentEnemy.hull - USS_Schwarzenegger.firepower
     } else {
         console.log("It's a miss!")
     }
@@ -59,10 +77,11 @@ let userAttack = () => {
 // Enemy Attack:
 
 let enemyAttack = () => {
-    let enemyHitChance = Math.random()
-    if (enemyHitChance <= Alien1['accuracy']) {
+    // randomize in future
+    let enemyHitChance = .3
+    if (enemyHitChance <= currentEnemy['accuracy']) {
         console.log("You've been hit")
-        USS_Schwarzenegger.hull = USS_Schwarzenegger.hull - Alien1.firepower
+        USS_Schwarzenegger.hull = USS_Schwarzenegger.hull - currentEnemy.firepower
         console.log(`Remaining health: ${USS_Schwarzenegger.hull}`)
     } else {
         console.log("The enemy ship missed!")
@@ -95,18 +114,6 @@ let enemyAttackAftermath = () => {
 //     }
 // }
 
-// since I'm just testing the players and actions, I wont worry about the randomization of enemy specs yet.
-
-
-
-// testing battle functionality
-// userAttack()
-// userAttackAftermath()
-// enemyAttack()
-// enemyAttackAftermath()
-
-
-
 
 // Alright, we've got the user/enemy attack functions together and retreat done, we can try and involve the user to battle it out.
 // so user input by alerts to the console
@@ -131,13 +138,14 @@ if (beginGame == "yes") {
     console.log("enemy ship approaching")
 } else {
     alert("Maybe some other time")
+    // insert exit command or jump to some line
 }
 
 // establish who we're fighting
 // let currentEnemy = Alien1
 
 // initial user attack
-firstAttack = alert("firing at the enemy!")
+alert("firing at the enemy!")
 userAttack()
 
 // check enemy damages
@@ -151,10 +159,30 @@ if (Alien1.hull > 0) {
 // check user damages
 enemyAttackAftermath()
 
-// second round
+// second round / battle loop
 alert("preparing for a second attack on the enemy!")
-userAttack()
-userAttackAftermath()
+
+while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
+    alert("Looks like they're still going. Firing on the target!")
+    userAttack()
+    userAttackAftermath()
+    enemyAttack()
+    enemyAttackAftermath()
+}
+alert("I think th eloop worked")
+// I think a simple if statement wont work here. Will try a while loop instead
+// if (Alien1.hull <= 0) {
+//     currentEnemy = Alien2
+//     alert("second enemy ship approaching! Firing on the target!")
+// } else {
+//     alert("Looks like they're still going. Firing on the target!")
+//     userAttack()
+//     userAttackAftermath()
+// }
+
+
+// test alien1 to alien2 switch
+// console.log(currentEnemy.shipName)
 
 // check continue:
 
