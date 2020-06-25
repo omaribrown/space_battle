@@ -7,7 +7,22 @@ let USS_Schwarzenegger = {
     accuracy: .7
 }
 let Alien1 = {
-    hull: 4,
+    hull: 10, 
+    firepower: 3,
+    accuracy: .6
+}
+let Alien2 = {
+    hull: 10, 
+    firepower: 3,
+    accuracy: .6
+}
+let Alien3 = {
+    hull: 10, 
+    firepower: 3,
+    accuracy: .6
+}
+let Alien4 = {
+    hull: 10, 
     firepower: 3,
     accuracy: .6
 }
@@ -48,6 +63,7 @@ let enemyAttack = () => {
     if (enemyHitChance <= Alien1['accuracy']) {
         console.log("You've been hit")
         USS_Schwarzenegger.hull = USS_Schwarzenegger.hull - Alien1.firepower
+        console.log(`Remaining health: ${USS_Schwarzenegger.hull}`)
     } else {
         console.log("The enemy ship missed!")
     }
@@ -58,6 +74,7 @@ let enemyAttack = () => {
 let userAttackAftermath = () => {
     if (Alien1.hull <= 0) {
         console.log("You've destroyed the enemy ship!")
+        alert("You've destroyed the enemy ship!")
     } else {
         console.log(`Remaining enemy health: ${Alien1.hull}`)
         console.log("Prepare for an enemy attack!")
@@ -67,21 +84,26 @@ let userAttackAftermath = () => {
 let enemyAttackAftermath = () => {
     if (USS_Schwarzenegger.hull <= 0) {
         console.log("Game over")
-    } else {
-        console.log(`Remaining enemy health: ${USS_Schwarzenegger.hull}`)
     }
-    // call next round function
 }
+
+// let destroyedEnemy = () => {
+//     let checkContinue = prompt("We've survided an enemy attack. Do you wish to continue?")
+//     if (checkContinue == "yes") {
+//         // check for remaining enemy objects
+//         if (Alien1)
+//     }
+// }
 
 // since I'm just testing the players and actions, I wont worry about the randomization of enemy specs yet.
 
 
 
 // testing battle functionality
-userAttack()
-userAttackAftermath()
-enemyAttack()
-enemyAttackAftermath()
+// userAttack()
+// userAttackAftermath()
+// enemyAttack()
+// enemyAttackAftermath()
 
 
 
@@ -90,16 +112,51 @@ enemyAttackAftermath()
 // so user input by alerts to the console
 
 
+// check enemy damages function 
+
 
 
 //
 // ─── THE GAME ───────────────────────────────────────────────────────────────────
 //
 
-// let startAttack = prompt("Fire?", "yes")
 
-// if (attackCommand == "yes") {
-//     userAttack()
-//     if 
-// }
+// Intro section goals: 
+// 1. create first attack exchanges and aftermath reports using set accuracy parameters. 
+// 2. introduce second enemy once first is killed and initiate battle.
+// 3. introduce randomized values to alien objects and loop first battle enemy not dead
+let beginGame = prompt("ready for war?")
 
+if (beginGame == "yes") {
+    console.log("enemy ship approaching")
+} else {
+    alert("Maybe some other time")
+}
+
+// establish who we're fighting
+// let currentEnemy = Alien1
+
+// initial user attack
+firstAttack = alert("firing at the enemy!")
+userAttack()
+
+// check enemy damages
+userAttackAftermath()
+
+// initial enemy attack
+if (Alien1.hull > 0) {
+    enemyAttack()
+}
+
+// check user damages
+enemyAttackAftermath()
+
+// second round
+alert("preparing for a second attack on the enemy!")
+userAttack()
+userAttackAftermath()
+
+// check continue:
+
+
+// new enemy
