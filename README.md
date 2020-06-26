@@ -1,6 +1,18 @@
 # space_battle
 This is a repo for the PS Mid Mod 1 Project
 
+
+
+New Changes: 
+- finished level 1 functionality (not dialog and styling), except for end game function (maybe send to another page)
+- finished level 2 game flow!
+- fixed bugs preventing proper flow
+- changed all logs to alerts for easy interpretation
+- moved aftermath function inside of attack function for simplicity
+- small changes to battle loop
+- GOAL: set up an array of potential dialog options to be displayed for every attack round
+
+
 New Changes: 
 - added shipName's to alien objects to log them later
 - added currentEnemy change so that we can change the current enemy as we go through the game

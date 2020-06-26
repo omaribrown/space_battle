@@ -8,13 +8,13 @@ let USS_Schwarzenegger = {
 }
 let Alien1 = {
     shipName: "Alien1",
-    hull: 15, 
+    hull: 10, 
     firepower: 3,
     accuracy: .6
 }
 let Alien2 = {
     shipName: "Alien2",
-    hull: 10, 
+    hull: 11, 
     firepower: 3,
     accuracy: .6
 }
@@ -42,7 +42,7 @@ let Alien4 = {
 
 // current enemy:
 
-var currentEnemy = Alien1;
+var currentEnemy;
 // let currentEnemyCheck = () => {
 //     if (Alien1.hull > 0) {
 //         currentEnemy = Alien1
@@ -57,7 +57,26 @@ var currentEnemy = Alien1;
 // Retreat function:
 
 let retreat = () => {
-    console.log("You've escaped! Unfortunately, the enemy will have time to regroup.")
+    alert("You've escaped! Unfortunately, the enemy will have time to regroup.")
+}
+
+// lets create an aftermath function that will show what our ship looks like and what their ship looks like after both turns
+// update: we moved the aftermath functions on top because we are going to embed them in the attack functions
+let userAttackAftermath = () => {
+    if (currentEnemy.hull <= 0) {
+        alert("You've destroyed the enemy ship!")
+    } else {
+        alert(`It's a hit! ${currentEnemy.shipName} only has ${currentEnemy.hull} health remaining!`)
+        alert("Prepare for an enemy attack!")
+    }
+}
+
+let enemyAttackAftermath = () => {
+    if (USS_Schwarzenegger.hull > 0) {
+        alert(`We still have ${USS_Schwarzenegger.hull} health remaining.`)
+    } else {
+        alert("Game over")
+    }
 }
 
 // User attack:
@@ -66,10 +85,10 @@ let userAttack = () => {
     // let userHitChance = Math.random()
     let testHitChance = .6
     if (testHitChance <= USS_Schwarzenegger['accuracy']) {
-        console.log("It's a hit!")
         currentEnemy.hull = currentEnemy.hull - USS_Schwarzenegger.firepower
+        userAttackAftermath()
     } else {
-        console.log("It's a miss!")
+        alert("It's a miss! We'll get them next time")
     }
 }
 // userAttack()
@@ -80,31 +99,15 @@ let enemyAttack = () => {
     // randomize in future
     let enemyHitChance = .3
     if (enemyHitChance <= currentEnemy['accuracy']) {
-        console.log("You've been hit")
+        alert("You've been hit")
         USS_Schwarzenegger.hull = USS_Schwarzenegger.hull - currentEnemy.firepower
-        console.log(`Remaining health: ${USS_Schwarzenegger.hull}`)
+        enemyAttackAftermath()
     } else {
-        console.log("The enemy ship missed!")
+        alert("The enemy ship missed!")
     }
 }
 // enemyAttack()
 
-// lets create an aftermath function that will show what our ship looks like and what their ship looks like after both turns
-let userAttackAftermath = () => {
-    if (Alien1.hull <= 0) {
-        console.log("You've destroyed the enemy ship!")
-        alert("You've destroyed the enemy ship!")
-    } else {
-        console.log(`Remaining enemy health: ${Alien1.hull}`)
-        console.log("Prepare for an enemy attack!")
-    }
-}
-
-let enemyAttackAftermath = () => {
-    if (USS_Schwarzenegger.hull <= 0) {
-        console.log("Game over")
-    }
-}
 
 // let destroyedEnemy = () => {
 //     let checkContinue = prompt("We've survided an enemy attack. Do you wish to continue?")
@@ -132,44 +135,109 @@ let enemyAttackAftermath = () => {
 // 1. create first attack exchanges and aftermath reports using set accuracy parameters. 
 // 2. introduce second enemy once first is killed and initiate battle.
 // 3. introduce randomized values to alien objects and loop first battle enemy not dead
+
+
+//
+// ─── LEVEL 1 ────────────────────────────────────────────────────────────────────
+//
+
+    
 let beginGame = prompt("ready for war?")
 
 if (beginGame == "yes") {
-    console.log("enemy ship approaching")
+    alert("enemy ship approaching")
 } else {
     alert("Maybe some other time")
-    // insert exit command or jump to some line
+    // insert game over function
 }
-
-// establish who we're fighting
-// let currentEnemy = Alien1
-
 // initial user attack
 alert("firing at the enemy!")
+currentEnemy = Alien1
 userAttack()
 
 // check enemy damages
-userAttackAftermath()
+// userAttackAftermath()
+
 
 // initial enemy attack
-if (Alien1.hull > 0) {
+if (currentEnemy.hull > 0) {
     enemyAttack()
+    // enemyAttackAftermath()
 }
 
 // check user damages
-enemyAttackAftermath()
 
 // second round / battle loop
-alert("preparing for a second attack on the enemy!")
+alert("We are preparing for a second attack on the enemy!")
+
+while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
+    alert("Firing on the target!")
+    userAttack()
+    // userAttackAftermath()
+    if (currentEnemy.hull > 0) {
+        enemyAttack()
+        // enemyAttackAftermath()
+    }
+}
+if (USS_Schwarzenegger.hull <= 0) {
+    alert("You've died...")
+    // insert game over function
+    // insert else: do you want to continue?
+}
+
+//
+// ─── LEVEL 2 ────────────────────────────────────────────────────────────────────
+//
+
+    
+// alert(" second enemy ship approaches!")
+// new enemy
+currentEnemy = Alien2
+alert(`${currentEnemy.shipName} is approaching! Looks like they've got a health of ${currentEnemy.hull}`)
+
+// initial level 2 attack
+alert("I think we've got the aim right. Firing at the enemy!")
+userAttack()
+enemyAttack()
+
+
+
+// not sure what this block was, but I'm goingto comment it out for the moment
+
+// if (currentEnemy.hull > 0) {
+//     alert(`refering to ${currentEnemy.shipName}`)
+//     enemyAttack()
+//     enemyAttackAftermath()
+// }
+
+
+// check enemy damages
+// userAttackAftermath()
+
+// initial enemy attack
+// if (currentEnemy.hull > 0) {
+//     enemyAttack()
+//     enemyAttackAftermath()
+// }
 
 while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
     alert("Looks like they're still going. Firing on the target!")
     userAttack()
-    userAttackAftermath()
-    enemyAttack()
-    enemyAttackAftermath()
+    // userAttackAftermath()
+    if (currentEnemy.hull > 0) {
+        enemyAttack()
+        // enemyAttackAftermath()
+    } 
+
 }
-alert("I think th eloop worked")
+
+alert("end of level 2")
+//
+// ─── LEVEL 3 ────────────────────────────────────────────────────────────────────
+//
+
+    
+alert("a third enemy approaches")
 // I think a simple if statement wont work here. Will try a while loop instead
 // if (Alien1.hull <= 0) {
 //     currentEnemy = Alien2
@@ -181,6 +249,12 @@ alert("I think th eloop worked")
 // }
 
 
+
+//
+// ─── LEVEL 4 ────────────────────────────────────────────────────────────────────
+//
+
+    
 // test alien1 to alien2 switch
 // console.log(currentEnemy.shipName)
 
@@ -188,3 +262,6 @@ alert("I think th eloop worked")
 
 
 // new enemy
+
+
+// enemy ship destroyed displays twice
