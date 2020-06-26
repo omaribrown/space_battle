@@ -4,6 +4,20 @@ This is a repo for the PS Mid Mod 1 Project
 
 
 New Changes: 
+- randomized stats of enemies with introEnemy function
+- randomized attack hit probability
+- smoothed out flow of game
+- organized code chunks
+- added dialog for better understanding of place in game
+
+Work session goals:
+
+- Finish round 3
+- - create total of 6 enemies
+- organize battle stages: stage 1, shots fired/ stage 2, loop
+
+
+New Changes: 
 - finished level 1 functionality (not dialog and styling), except for end game function (maybe send to another page)
 - finished level 2 game flow!
 - fixed bugs preventing proper flow
