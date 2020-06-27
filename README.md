@@ -1,7 +1,16 @@
 # space_battle
 This is a repo for the PS Mid Mod 1 Project
 
+Work session goals:
 
+- check requirements
+- check continuation after round
+- improve dialog flow
+- add custom dialog options
+
+New Changes:
+- finished all levels
+- organized 2 stage levels
 
 New Changes: 
 - randomized stats of enemies with introEnemy function
@@ -9,13 +18,6 @@ New Changes:
 - smoothed out flow of game
 - organized code chunks
 - added dialog for better understanding of place in game
-
-Work session goals:
-
-- Finish round 3
-- - create total of 6 enemies
-- organize battle stages: stage 1, shots fired/ stage 2, loop
-
 
 New Changes: 
 - finished level 1 functionality (not dialog and styling), except for end game function (maybe send to another page)

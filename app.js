@@ -31,6 +31,18 @@ let Alien4 = {
     firepower: 0,
     accuracy: .0
 }
+let Alien5 = {
+    shipName: "Alien5",
+    hull: 0, 
+    firepower: 0,
+    accuracy: .0
+}
+let Alien6 = {
+    shipName: "Alien6",
+    hull: 0, 
+    firepower: 0,
+    accuracy: .0
+}
 
 var currentEnemy;
 let randHull;
@@ -52,7 +64,7 @@ let retreat = () => {
 let userAttackAftermath = () => {
     if (currentEnemy.hull <= 0) {
         alert(`It's a hit! The ship is in shambles!`)
-        alert("You've destroyed the enemy ship!")
+        // alert("You've destroyed the enemy ship!")
     } else {
         alert(`It's a hit! ${currentEnemy.shipName} only has ${currentEnemy.hull} health remaining!`)
         alert("Prepare for an enemy attack!")
@@ -100,7 +112,7 @@ let introEnemy = (alien) => {
     alien.firepower = (Math.floor(Math.random() * 3) + 2)
     console.log(alien)
     // alert("Incomming communication!")
-    alert(`${currentEnemy.shipName}'s got a shielf of ${currentEnemy.hull}, accuracy of ${currentEnemy.accuracy}, and firepower of ${currentEnemy.firepower}`)
+    alert(`${currentEnemy.shipName}'s got a shield of ${currentEnemy.hull}, accuracy of ${currentEnemy.accuracy}, and firepower of ${currentEnemy.firepower}`)
 
 }
 
@@ -124,6 +136,9 @@ if (beginGame == "yes") {
     // insert game over function
 }
 
+
+// ---------- Stage 1 Exchange---------------
+
 // initial user attack
 alert("Enemy shields are charging!")
 currentEnemy = Alien1
@@ -137,7 +152,7 @@ if (currentEnemy.hull > 0) {
     // enemyAttackAftermath()
 }
 
-// second round / battle loop
+//------------- Stage 2 Loop -------------------
 
 
 while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
@@ -184,32 +199,90 @@ alert("end of level 2")
 // ─── LEVEL 3 ────────────────────────────────────────────────────────────────────
 //
 
-    
+// stage 1
 alert("a third enemy approaches")
-// I think a simple if statement wont work here. Will try a while loop instead
-// if (Alien1.hull <= 0) {
-//     currentEnemy = Alien2
-//     alert("second enemy ship approaching! Firing on the target!")
-// } else {
-//     alert("Looks like they're still going. Firing on the target!")
-//     userAttack()
-//     userAttackAftermath()
-// }
+currentEnemy = Alien3
+introEnemy(Alien3)
+userAttack()
+enemyAttack()
 
 
+// stage 2
+while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
+    alert("Looks like they're still going. Firing on the target!")
+    userAttack()
+    if (currentEnemy.hull > 0) {
+        enemyAttack()
+    } 
 
-//
-// ─── LEVEL 4 ────────────────────────────────────────────────────────────────────
-//
+}
 
-    
-// test alien1 to alien2 switch
-// console.log(currentEnemy.shipName)
+alert("level 4")
 
-// check continue:
-
-
-// new enemy
+// stage 1
+alert("a new enemy approaches")
+currentEnemy = Alien4
+introEnemy(Alien4)
+userAttack()
+enemyAttack()
 
 
-// enemy ship destroyed displays twice
+// stage 2
+while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
+    alert("Looks like they're still going. Firing on the target!")
+    userAttack()
+    // userAttackAftermath()
+    if (currentEnemy.hull > 0) {
+        enemyAttack()
+        // enemyAttackAftermath()
+    } 
+
+}
+
+alert("level 5")
+
+// stage 1
+alert("a new enemy approaches")
+currentEnemy = Alien5
+introEnemy(Alien5)
+userAttack()
+enemyAttack()
+
+
+// stage 2
+while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
+    alert("Looks like they're still going. Firing on the target!")
+    userAttack()
+    // userAttackAftermath()
+    if (currentEnemy.hull > 0) {
+        enemyAttack()
+        // enemyAttackAftermath()
+    } 
+
+}
+
+alert("level 6")
+
+// stage 1
+alert("a new enemy approaches")
+currentEnemy = Alien6
+introEnemy(Alien6)
+userAttack()
+enemyAttack()
+
+
+// stage 2
+while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
+    alert("Looks like they're still going. Firing on the target!")
+    userAttack()
+    // userAttackAftermath()
+    if (currentEnemy.hull > 0) {
+        enemyAttack()
+        // enemyAttackAftermath()
+    } 
+
+}
+
+alert("You defended the planet from evil aliens!")
+alert(`You finished with ${USS_Schwarzenegger.hull} health remaining!`)
+
