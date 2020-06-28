@@ -286,3 +286,4 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 alert("You defended the planet from evil aliens!")
 alert(`You finished with ${USS_Schwarzenegger.hull} health remaining!`)
 
+//
