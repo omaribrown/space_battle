@@ -26,19 +26,19 @@ let Alien3 = {
     accuracy: .0
 }
 let Alien4 = {
-    shipName: "Alien4",
+    shipName: "The Black Cloud",
     hull: 0, 
     firepower: 0,
     accuracy: .0
 }
 let Alien5 = {
-    shipName: "Alien5",
+    shipName: "The Teresa",
     hull: 0, 
     firepower: 0,
     accuracy: .0
 }
 let Alien6 = {
-    shipName: "Alien6",
+    shipName: "The Omen",
     hull: 0, 
     firepower: 0,
     accuracy: .0
@@ -56,7 +56,10 @@ let randFirepower;
 
     
 let retreat = () => {
-    alert("You've escaped! Unfortunately, the enemy will have time to regroup.")
+    alert("You've escaped!")
+    while (retreatQuestion == 'No') {
+
+    }
 }
 
 // lets create an aftermath function that will show what our ship looks like and what their ship looks like after both turns
@@ -93,7 +96,7 @@ let userAttack = () => {
 let enemyAttack = () => {
     // randomize in future
     let enemyHitChance = Math.random()
-    if (enemyHitChance <= currentEnemy['accuracy']) {
+    if (enemyHitChance <= currentEnemy['accuracy'] && currentEnemy.hull > 0) {
         alert("You've been hit")
         USS_Schwarzenegger.hull = USS_Schwarzenegger.hull - currentEnemy.firepower
         enemyAttackAftermath()
@@ -116,7 +119,7 @@ let introEnemy = (alien) => {
 
 }
 
-
+let battleLoopDialog = []
 
 
 //
@@ -127,10 +130,10 @@ let introEnemy = (alien) => {
 // ─── LEVEL 1 ────────────────────────────────────────────────────────────────────
 //
 
-let beginGame = prompt("ready for war?")
+let beginGame = prompt("Ready for war?")
 
 if (beginGame == "yes") {
-    alert("enemy ship approaching")
+    alert("Enemy ship approaching")
 } else {
     alert("Maybe some other time")
     // insert game over function
