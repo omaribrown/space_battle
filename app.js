@@ -184,7 +184,12 @@ introEnemy(Alien2)
 // initial level 2 attack
 alert("I think we've got the aim right. Firing at the enemy!")
 userAttack()
-enemyAttack()
+// initial enemy attack
+if (currentEnemy.hull > 0) {
+    enemyAttack()
+    alert("We are preparing for a second attack on the enemy!")
+    // enemyAttackAftermath()
+}
 
 while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
     alert("Looks like they're still going. Firing on the target!")
@@ -207,8 +212,12 @@ alert("a third enemy approaches")
 currentEnemy = Alien3
 introEnemy(Alien3)
 userAttack()
-enemyAttack()
-
+// initial enemy attack
+if (currentEnemy.hull > 0) {
+    enemyAttack()
+    alert("We are preparing for a second attack on the enemy!")
+    // enemyAttackAftermath()
+}
 
 // stage 2
 while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
@@ -227,8 +236,12 @@ alert("a new enemy approaches")
 currentEnemy = Alien4
 introEnemy(Alien4)
 userAttack()
-enemyAttack()
-
+// initial enemy attack
+if (currentEnemy.hull > 0) {
+    enemyAttack()
+    alert("We are preparing for a second attack on the enemy!")
+    // enemyAttackAftermath()
+}
 
 // stage 2
 while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
@@ -249,8 +262,12 @@ alert("a new enemy approaches")
 currentEnemy = Alien5
 introEnemy(Alien5)
 userAttack()
-enemyAttack()
-
+// initial enemy attack
+if (currentEnemy.hull > 0) {
+    enemyAttack()
+    alert("We are preparing for a second attack on the enemy!")
+    // enemyAttackAftermath()
+}
 
 // stage 2
 while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
@@ -271,8 +288,12 @@ alert("a new enemy approaches")
 currentEnemy = Alien6
 introEnemy(Alien6)
 userAttack()
-enemyAttack()
-
+// initial enemy attack
+if (currentEnemy.hull > 0) {
+    enemyAttack()
+    alert("We are preparing for a second attack on the enemy!")
+    // enemyAttackAftermath()
+}
 
 // stage 2
 while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
