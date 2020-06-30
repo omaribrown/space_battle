@@ -1,13 +1,9 @@
 # space_battle
 This is a repo for the PS Mid Mod 1 Project
 
-Work session goals:
-
-- check requirements
-- check continuation after round
-- improve dialog flow
-- add custom dialog options
--
+New Changes: 
+- added retreat
+- added end of game break
 
 New Changes:
 - finished all levels

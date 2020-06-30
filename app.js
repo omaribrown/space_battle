@@ -54,8 +54,7 @@ let randFirepower;
 // ─── ACTIONS ────────────────────────────────────────────────────────────────────
 //
 
-// lets create an aftermath function that will show what our ship looks like and what their ship looks like after both turns
-// update: we moved the aftermath functions on top because we are going to embed them in the attack functions
+// this function checks the health of the enemy ship
 let userAttackAftermath = () => {
     if (currentEnemy.hull <= 0) {
         alert(`It's a hit! The ship is in shambles!`)
@@ -66,17 +65,21 @@ let userAttackAftermath = () => {
     }
 }
 
+// this function checks the health of the user ship and if it's game over
 let enemyAttackAftermath = () => {
     if (USS_Schwarzenegger.hull > 0) {
         alert(`We still have ${USS_Schwarzenegger.hull} health remaining.`)
     } else {
         alert("Game over")
+        didYouDie = 1
+        while(didYouDie == 1) {
+            gameOver()
+        }
     }
 }
 
 let userAttack = () => {
     let userHitChance = Math.random()
-    // let testHitChance = .6
     if (userHitChance <= USS_Schwarzenegger['accuracy']) {
         currentEnemy.hull = currentEnemy.hull - USS_Schwarzenegger.firepower
         userAttackAftermath()
@@ -86,7 +89,6 @@ let userAttack = () => {
 }
 
 let enemyAttack = () => {
-    // randomize in future
     let enemyHitChance = Math.random()
     if (enemyHitChance <= currentEnemy['accuracy'] && currentEnemy.hull > 0) {
         alert("You've been hit!")
@@ -101,12 +103,12 @@ let enemyAttack = () => {
 // ─── GENERATING ENEMY ───────────────────────────────────────────────────────────
 //
 
+// This function will establish the enemy ship specs before each round
 let introEnemy = (alien) => {
     alien.hull = (Math.floor(Math.random() * 4) + 3)
     alien.accuracy = (Math.random() * (.8 - .6) + .6).toFixed(1)
     alien.firepower = (Math.floor(Math.random() * 3) + 2)
     console.log(alien)
-    // alert("Incomming communication!")
     alert(`${currentEnemy.shipName}'s got a shield of ${currentEnemy.hull}, accuracy of ${currentEnemy.accuracy}, and firepower of ${currentEnemy.firepower}`)
 
 }
@@ -127,14 +129,6 @@ let gameOver = () => {
 let beginGame = prompt("The planet is under attack! Are you ready to defend Earth from evil alien ships?")
 
 while (beginGame == 'yes') {
-
-// if (beginGame == "yes") {
-//     alert("Enemy ship approaching")
-// } else {
-//     alert("Maybe some other time")
-//     // insert game over function
-// }
-
 
 // ---------- Stage 1 Exchange---------------
 
@@ -237,7 +231,11 @@ returnQuestion = prompt("Would you like to retreat?")
 while (returnQuestion == 'yes') {
     gameOver()
 }
+//
+// ─── LEVEL 4 ────────────────────────────────────────────────────────────────────
+//
 
+    
 // stage 1
 alert("A new enemy approaches")
 currentEnemy = Alien4
@@ -263,6 +261,12 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 }
 
 alert("We've got them on their heels!")
+
+//
+// ─── LEVEL 5 ────────────────────────────────────────────────────────────────────
+//
+
+    
 returnQuestion = prompt("Would you like to retreat?")
 while (returnQuestion == 'yes') {
     gameOver()
@@ -297,7 +301,11 @@ returnQuestion = prompt("Would you like to retreat?")
 while (returnQuestion == 'yes') {
     gameOver()
 }
+//
+// ─── LEVEL 6 ────────────────────────────────────────────────────────────────────
+//
 
+    
 // stage 1
 alert("The final enemy approaches")
 currentEnemy = Alien6
