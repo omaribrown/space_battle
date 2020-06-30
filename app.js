@@ -54,14 +54,6 @@ let randFirepower;
 // ─── ACTIONS ────────────────────────────────────────────────────────────────────
 //
 
-    
-let retreat = () => {
-    alert("You've escaped!")
-    while (retreatQuestion == 'No') {
-
-    }
-}
-
 // lets create an aftermath function that will show what our ship looks like and what their ship looks like after both turns
 // update: we moved the aftermath functions on top because we are going to embed them in the attack functions
 let userAttackAftermath = () => {
@@ -118,6 +110,11 @@ let introEnemy = (alien) => {
     alert(`${currentEnemy.shipName}'s got a shield of ${currentEnemy.hull}, accuracy of ${currentEnemy.accuracy}, and firepower of ${currentEnemy.firepower}`)
 
 }
+// Exit functions
+
+let gameOver = () => {
+    alert("Thanks for playing... You must exit the page, now.")
+}
 
 //
 // ─── THE GAME ───────────────────────────────────────────────────────────────────
@@ -127,14 +124,16 @@ let introEnemy = (alien) => {
 // ─── LEVEL 1 ────────────────────────────────────────────────────────────────────
 //
 
-let beginGame = prompt("Ready for war?")
+let beginGame = prompt("The planet is under attack! Are you ready to defend Earth from evil alien ships?")
 
-if (beginGame == "yes") {
-    alert("Enemy ship approaching")
-} else {
-    alert("Maybe some other time")
-    // insert game over function
-}
+while (beginGame == 'yes') {
+
+// if (beginGame == "yes") {
+//     alert("Enemy ship approaching")
+// } else {
+//     alert("Maybe some other time")
+//     // insert game over function
+// }
 
 
 // ---------- Stage 1 Exchange---------------
@@ -149,7 +148,6 @@ userAttack()
 if (currentEnemy.hull > 0) {
     enemyAttack()
     alert("We are preparing for a another attack on the enemy!")
-    // enemyAttackAftermath()
 }
 
 //------------- Stage 2 Loop -------------------
@@ -171,6 +169,10 @@ if (USS_Schwarzenegger.hull <= 0) {
 }
 
 alert("One enemy down! There's another ship on the horizon!")
+var returnQuestion = prompt("Would you like to retreat?")
+while (returnQuestion == 'yes') {
+    gameOver()
+}
 //
 // ─── LEVEL 2 ────────────────────────────────────────────────────────────────────
 //
@@ -200,6 +202,10 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 }
 
 alert("That's two enemy ships destroyed!")
+returnQuestion = prompt("Would you like to retreat?")
+while (returnQuestion == 'yes') {
+    gameOver()
+}
 //
 // ─── LEVEL 3 ────────────────────────────────────────────────────────────────────
 //
@@ -227,6 +233,10 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 }
 
 alert("Easy peasy!")
+returnQuestion = prompt("Would you like to retreat?")
+while (returnQuestion == 'yes') {
+    gameOver()
+}
 
 // stage 1
 alert("A new enemy approaches")
@@ -253,6 +263,10 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 }
 
 alert("We've got them on their heels!")
+returnQuestion = prompt("Would you like to retreat?")
+while (returnQuestion == 'yes') {
+    gameOver()
+}
 
 // stage 1
 alert("A new enemy approaches")
@@ -279,6 +293,10 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 }
 
 alert("They've only got one more ship!")
+returnQuestion = prompt("Would you like to retreat?")
+while (returnQuestion == 'yes') {
+    gameOver()
+}
 
 // stage 1
 alert("The final enemy approaches")
@@ -306,5 +324,6 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 
 alert("You defended the planet from evil aliens!")
 alert(`You finished with ${USS_Schwarzenegger.hull} health remaining!`)
-
-//
+alert("Refresh to play again!")
+break
+}
