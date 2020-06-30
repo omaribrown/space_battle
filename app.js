@@ -8,19 +8,19 @@ let USS_Schwarzenegger = {
     accuracy: .7
 }
 let Alien1 = {
-    shipName: "Alien1",
+    shipName: "The Harbinger",
     hull: 0, 
     firepower: 0,
     accuracy: .0
 }
 let Alien2 = {
-    shipName: "Alien2",
+    shipName: "The Albatross",
     hull: 0, 
     firepower: 0,
     accuracy: .0
 }
 let Alien3 = {
-    shipName: "Alien3",
+    shipName: "The Hunter",
     hull: 0, 
     firepower: 0,
     accuracy: .0
@@ -46,7 +46,7 @@ let Alien6 = {
 
 var currentEnemy;
 let randHull;
-let randAccuracy; //creates string. might pose problem in future
+let randAccuracy; 
 let randFirepower;
 
 
@@ -89,7 +89,7 @@ let userAttack = () => {
         currentEnemy.hull = currentEnemy.hull - USS_Schwarzenegger.firepower
         userAttackAftermath()
     } else {
-        alert("It's a miss! We'll get them next time")
+        alert("It's a miss! We'll get them next time.")
     }
 }
 
@@ -97,7 +97,7 @@ let enemyAttack = () => {
     // randomize in future
     let enemyHitChance = Math.random()
     if (enemyHitChance <= currentEnemy['accuracy'] && currentEnemy.hull > 0) {
-        alert("You've been hit")
+        alert("You've been hit!")
         USS_Schwarzenegger.hull = USS_Schwarzenegger.hull - currentEnemy.firepower
         enemyAttackAftermath()
     } else {
@@ -118,9 +118,6 @@ let introEnemy = (alien) => {
     alert(`${currentEnemy.shipName}'s got a shield of ${currentEnemy.hull}, accuracy of ${currentEnemy.accuracy}, and firepower of ${currentEnemy.firepower}`)
 
 }
-
-let battleLoopDialog = []
-
 
 //
 // ─── THE GAME ───────────────────────────────────────────────────────────────────
@@ -151,7 +148,7 @@ userAttack()
 // initial enemy attack
 if (currentEnemy.hull > 0) {
     enemyAttack()
-    alert("We are preparing for a second attack on the enemy!")
+    alert("We are preparing for a another attack on the enemy!")
     // enemyAttackAftermath()
 }
 
@@ -173,13 +170,13 @@ if (USS_Schwarzenegger.hull <= 0) {
     // insert else: do you want to continue?
 }
 
+alert("One enemy down! There's another ship on the horizon!")
 //
 // ─── LEVEL 2 ────────────────────────────────────────────────────────────────────
 //
 
 currentEnemy = Alien2
 introEnemy(Alien2)
-// alert(`${currentEnemy.shipName} is approaching! Looks like they've got a health of ${currentEnemy.hull}`)
 
 // initial level 2 attack
 alert("I think we've got the aim right. Firing at the enemy!")
@@ -187,7 +184,7 @@ userAttack()
 // initial enemy attack
 if (currentEnemy.hull > 0) {
     enemyAttack()
-    alert("We are preparing for a second attack on the enemy!")
+    alert("We are preparing for a another attack on the enemy!")
     // enemyAttackAftermath()
 }
 
@@ -202,20 +199,20 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 
 }
 
-alert("end of level 2")
+alert("That's two enemy ships destroyed!")
 //
 // ─── LEVEL 3 ────────────────────────────────────────────────────────────────────
 //
 
 // stage 1
-alert("a third enemy approaches")
+alert("A third enemy approaches")
 currentEnemy = Alien3
 introEnemy(Alien3)
 userAttack()
 // initial enemy attack
 if (currentEnemy.hull > 0) {
     enemyAttack()
-    alert("We are preparing for a second attack on the enemy!")
+    alert("We are preparing for a another attack on the enemy!")
     // enemyAttackAftermath()
 }
 
@@ -229,17 +226,17 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 
 }
 
-alert("level 4")
+alert("Easy peasy!")
 
 // stage 1
-alert("a new enemy approaches")
+alert("A new enemy approaches")
 currentEnemy = Alien4
 introEnemy(Alien4)
 userAttack()
 // initial enemy attack
 if (currentEnemy.hull > 0) {
     enemyAttack()
-    alert("We are preparing for a second attack on the enemy!")
+    alert("We are preparing for a another attack on the enemy!")
     // enemyAttackAftermath()
 }
 
@@ -255,17 +252,17 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 
 }
 
-alert("level 5")
+alert("We've got them on their heels!")
 
 // stage 1
-alert("a new enemy approaches")
+alert("A new enemy approaches")
 currentEnemy = Alien5
 introEnemy(Alien5)
 userAttack()
 // initial enemy attack
 if (currentEnemy.hull > 0) {
     enemyAttack()
-    alert("We are preparing for a second attack on the enemy!")
+    alert("We are preparing for a another attack on the enemy!")
     // enemyAttackAftermath()
 }
 
@@ -281,17 +278,17 @@ while (currentEnemy.hull > 0 && USS_Schwarzenegger.hull > 0) {
 
 }
 
-alert("level 6")
+alert("They've only got one more ship!")
 
 // stage 1
-alert("a new enemy approaches")
+alert("The final enemy approaches")
 currentEnemy = Alien6
 introEnemy(Alien6)
 userAttack()
 // initial enemy attack
 if (currentEnemy.hull > 0) {
     enemyAttack()
-    alert("We are preparing for a second attack on the enemy!")
+    alert("We are preparing for a another attack on the enemy!")
     // enemyAttackAftermath()
 }
 
